@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MiFibra - Training on the Job</title>
+    <link rel="icon" type="image/vnd.icon" href="assets/img/favicon/cmpc-logo.ico" />
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+<header>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <img src="assets/img/mifibra.png" alt="Logo" class="logo" onclick="window.location.href='index.html';">
+        </div>
+        <div class="navbar-right">
+            <a href="#" id="inicioLink"><i class="fas fa-home"></i> Inicio</a>
+            <a href="#" id="estandaresLink"><i class="fas fa-clipboard-list"></i> Estándares</a>
+            <a href="#"><i class="fas fa-chart-bar"></i> Reportes</a>
+            <a href="#"><i class="fas fa-cogs"></i> Configuración</a>
+        </div>
+    </nav>
+</header>
+
+<!-- Contenido Principal -->
+<div class="container mt-4" id="contenidoPrincipal"></div>
+
+<!-- Modal para agregar Training on the Job -->
+<div class="modal fade" id="formularioModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold">Nuevo Training on the Job</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" style="max-height: 80vh; overflow-y: auto;">
+                <form id="formularioEstandar">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Nombre del Estándar</label>
+                            <input type="text" class="form-control" id="nombreEstandar">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Área</label>
+                            <input type="text" class="form-control" id="area">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Áreas Específicas</label>
+                            <input type="text" class="form-control" id="areasEspecificas">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Skills Asociadas</label>
+                            <input type="text" class="form-control" id="skills">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Código del Estándar</label>
+                            <input type="text" class="form-control" id="codigoEstandar">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Duración (Horas)</label>
+                            <input type="number" class="form-control" id="duracion">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Avance (%)</label>
+                            <input type="number" class="form-control" id="avance">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Fecha de Actualización</label>
+                            <input type="date" class="form-control" id="fechaActualizacion">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="planEntrenamientoModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl"> 
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title fw-bold" id="modalLabel">
+                    Plan de Entrenamiento
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <div class="cards shadow-lg p-3">
+                    <div class="card-header text-center fw-bold bg-success text-white">
+                        Plan de Entrenamiento <span id="nombreEstandar"></span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title text-success text-center" id="colaboradorNombre">
+                            Colaborador: <input type="text" id="inputColaborador" class="form-control-sm" placeholder="Ingrese el nombre">
+                        </h5>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-sm" id="trainingTable">
+                                <thead class="table-success text-center">
+                                    <tr>
+                                        <th>Acciones</th>
+                                        <th>Fecha</th>
+                                        <th>Demostración</th>
+                                        <th>Práctica Juntos</th>
+                                        <th>Solo 5 Veces</th>
+                                        <th>Autónomo</th>
+                                        <th>Paso Crítico</th>
+                                        <th>Evaluación</th>
+                                        <th>Observaciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="trainingBody">
+                                    <!-- Filas dinámicas aquí -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <button class="btn btn-success mt-3" onclick="addRow()">Agregar Acción</button>
+                        <button class="btn btn-success mt-3" onclick="guardarPlanEntrenamiento()">Guardar Plan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="estandaresLink.js"></script>
+<script src="inicioLink.js"></script>
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>
