@@ -124,13 +124,13 @@ body {
 /* Responsive */
 @media (max-width: 768px) {
     .navbar-right {
-        display: none; /* Ocultamos los enlaces por defecto */
+        display: none; 
         flex-direction: column;
         align-items: center;
         background-color: #26864a;
         position: absolute;
         width: 100%;
-        top: 60px; /* Alinea con el navbar */
+        top: 60px; 
         left: 0;
         padding: 10px 0;
         z-index: 100;
@@ -140,6 +140,7 @@ body {
         font-size: 1rem;
         margin-bottom: 10px;
         width: 100%;
+        margin-left: 30px;
         text-align: center;
     }
 
@@ -152,7 +153,7 @@ body {
     .menu-icon {
         display: block;
         z-index: 101;
-        margin-right: 20px; /* Asegura que el icono esté encima del menú desplegado */
+        margin-right: 20px; 
     }
 
     /* Ajustar el diseño de las cards para apilarse */
