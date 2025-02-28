@@ -12,16 +12,17 @@ body {
 
 /* Navbar */
 .navbar {
-    background: #26864a;  
+    background: #26864a;
     color: white;
     width: 100%;
     height: 60px;
     display: flex;
     align-items: center;
+    justify-content: space-between; /* Asegura que el logo y los elementos del navbar estén separados */
     top: 0;
     left: 0;
-    box-sizing: border-box; 
-    padding: 0 20px; 
+    box-sizing: border-box;
+    padding: 0 20px;
 }
 
 .navbar-left {
@@ -35,11 +36,17 @@ body {
     width: 150px;
 }
 
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+/* Navbar Links */
 .navbar-right a {
     color: white;
     text-decoration: none;
     font-size: 1rem;
-    margin-right: 20px;  
+    margin-right: 20px;
     display: inline-flex;
     align-items: center;
     white-space: nowrap;
@@ -56,6 +63,25 @@ body {
     margin-right: 8px;
 }
 
+/* Hamburger Menu */
+.menu-toggle {
+    display: none;
+}
+
+.menu-icon {
+    display: none;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.menu-icon div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+}
+
+/* Content */
 .content {
     padding: 20px;
     width: 100%;
@@ -64,31 +90,81 @@ body {
 /* Cards 1 */
 #tarjetasContainer {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 15px; 
-    justify-items: center; 
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    justify-items: center;
     margin-top: 20px;
 }
 
 .card {
-    max-width: 400px; 
-    font-size: 1rem; 
-    margin: 10px 0; 
+    max-width: 400px;
+    font-size: 1rem;
+    margin: 10px 0;
 }
 
 .list-group-item {
-    padding: 5px 10px; 
-    font-size: 0.8rem; 
+    padding: 5px 10px;
+    font-size: 0.8rem;
 }
 
 .card-body .ver-plan-btn {
-    margin-right: 10px;  
+    margin-right: 10px;
     font-size: 0.8rem;
 }
+
 .card-body .eliminar-btn {
     font-size: 0.8rem;
 }
+
 .card-body .editar-btn {
-    margin-right: 10px;  
+    margin-right: 10px;
     font-size: 0.8rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar-right {
+        display: none; /* Ocultamos los enlaces por defecto */
+        flex-direction: column;
+        align-items: center;
+        background-color: #26864a;
+        position: absolute;
+        width: 100%;
+        top: 60px; /* Alinea con el navbar */
+        left: 0;
+        padding: 10px 0;
+        z-index: 100;
+    }
+
+    .navbar-right a {
+        font-size: 1rem;
+        margin-bottom: 10px;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Mostrar el menú cuando el checkbox está marcado */
+    .menu-toggle:checked + .navbar-right {
+        display: flex;
+    }
+
+    /* Mostrar el icono hamburguesa */
+    .menu-icon {
+        display: block;
+        z-index: 101;
+        margin-right: 20px; /* Asegura que el icono esté encima del menú desplegado */
+    }
+
+    /* Ajustar el diseño de las cards para apilarse */
+    #tarjetasContainer {
+        grid-template-columns: 1fr; /* Apilar las cards en una columna */
+    }
+}
+
+/* Aseguramos que las cards no se solapen en pantallas más pequeñas */
+@media (max-width: 480px) {
+    .navbar-right a {
+        font-size: 0.9rem;
+        margin-right: 10px;
+    }
 }

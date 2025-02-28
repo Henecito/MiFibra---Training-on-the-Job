@@ -12,19 +12,34 @@
 </head>
 
 <body>
-<header>
-    <nav class="navbar">
-        <div class="navbar-left">
-            <img src="assets/img/mifibra.png" alt="Logo" class="logo" onclick="window.location.href='index.html';">
-        </div>
-        <div class="navbar-right">
-            <a href="#" id="inicioLink"><i class="fas fa-home"></i> Inicio</a>
-            <a href="#" id="estandaresLink"><i class="fas fa-clipboard-list"></i> Estándares</a>
-            <a href="#"><i class="fas fa-chart-bar"></i> Reportes</a>
-            <a href="#"><i class="fas fa-cogs"></i> Configuración</a>
-        </div>
-    </nav>
-</header>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-left">
+                <img src="assets/img/mifibra.png" alt="Logo" class="logo" onclick="window.location.href='index.html';">
+            </div>
+            
+            <!-- Hamburger Icon for Mobile -->
+            <div class="menu-icon">
+                <label for="menu-toggle">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </label>
+            </div>
+            
+            <!-- Checkbox to toggle menu visibility -->
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            
+            <!-- Navbar links -->
+            <div class="navbar-right">
+                <a href="#" id="inicioLink"><i class="fas fa-home"></i> Inicio</a>
+                <a href="#" id="estandaresLink"><i class="fas fa-clipboard-list"></i> Estándares</a>
+                <a href="#"><i class="fas fa-chart-bar"></i> Reportes</a>
+                <a href="#"><i class="fas fa-cogs"></i> Configuración</a>
+            </div>
+        </nav>
+    </header>
+    
 
 <!-- Contenido Principal -->
 <div class="container mt-4" id="contenidoPrincipal"></div>
