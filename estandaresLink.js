@@ -164,8 +164,8 @@ document.getElementById('formularioEstandar').addEventListener('submit', functio
     // Mostrar SweetAlert de éxito después de guardar los cambios
     Swal.fire({
         icon: 'success',
-        title: '¡Edición guardada!',
-        text: 'El estándar ha sido editado correctamente.',
+        title: '¡Ha sido guardado!',
+        text: 'El estándar ha sido guardado correctamente.',
         confirmButtonText: 'Aceptar'
     });
 
